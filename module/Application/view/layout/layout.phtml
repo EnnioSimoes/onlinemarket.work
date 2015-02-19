@@ -45,7 +45,8 @@
         </nav>
         <div class="container">
             <div class="col-md-2">
-                <?php echo $this->categories; ?>
+                <h3>Categorias</h3>
+                <?php echo $this->htmllist($this->categories); ?>
             </div>            
             <div class="col-md-10">
                 <?php echo $this->content; ?>                
