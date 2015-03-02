@@ -37,6 +37,9 @@
         ),
         'factories' =>array(
             'market-post-controller' => 'Market\Factory\PostControllerFactory'
+        ),
+        'aliases' =>array(
+            'alt' => 'market-view-controller'
         )
     ),     
     'view_manager' => array(
