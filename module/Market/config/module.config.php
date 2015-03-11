@@ -56,7 +56,17 @@ return array(
                                     )
                                 ),
                             ),
-                        ),
+                            'index' => array(
+                                'type' => 'Literal',
+                                'options' => array(
+                                    'route' => '/',
+                                    'defaults' => array(
+                                        'controller' => 'market-view-controller',
+                                        'action' => 'index'
+                                    )
+                                )
+                            )                            
+                        )
                     ),
                     'post' => array(
                         'type' => 'Literal',
