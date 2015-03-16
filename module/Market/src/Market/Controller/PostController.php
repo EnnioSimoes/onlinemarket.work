@@ -11,7 +11,13 @@ use Zend\View\Model\ViewModel;
 
 class PostController extends AbstractActionController{
     public $categories;
+    private $postForm;
     
+    public function setPostForm($postForm) 
+    {
+        $this->postForm = $postForm;
+    }
+
     public function setCategories($categories) 
     {
         $this->categories = $categories;
@@ -19,8 +25,11 @@ class PostController extends AbstractActionController{
     
     public function indexAction() 
     {
-        $viewModel = new ViewModel(array('categories' => $this->categories));
-        $viewModel->setTemplate("market/post/invalid.phtml");
+        $data = $this->params()->fromPost();
+        $this->postForm->setData($data);
+        
+        $viewModel = new ViewModel(array('postForm' => $this->postForm));
+        //$viewModel->setTemplate("market/post/invalid.phtml");
         
         return $viewModel;
     }
