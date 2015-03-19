@@ -28,7 +28,7 @@ class PostController extends AbstractActionController{
         $data = $this->params()->fromPost();
         $this->postForm->setData($data);
         
-        $viewModel = new ViewModel(array('postForm' => $this->postForm));
+        $viewModel = new ViewModel(array('postForm' => $this->postForm, 'data'=>$data));
         //$viewModel->setTemplate("market/post/invalid.phtml");
         
         return $viewModel;

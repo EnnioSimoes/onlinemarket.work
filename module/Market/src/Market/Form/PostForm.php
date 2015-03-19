@@ -32,7 +32,7 @@ class PostForm extends Form
         
         $title = new Text('title');
         $title->setLabel('Title')
-                ->setAttributes(array('size'=>60, 'maxLength'=>128));
+                ->setAttributes(array('size'=>25, 'maxLength'=>128));
         
         $submit = new Submit('submit');
         $submit->setAttribute('value', 'Post');
