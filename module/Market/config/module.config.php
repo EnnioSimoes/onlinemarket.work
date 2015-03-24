@@ -100,6 +100,12 @@ return array(
         'factories' => array(
             'market-post-form'          => 'Market\Factory\PostFormFactory',
             'market-post-filter'        => 'Market\Factory\PostFilterFactory'
+        ),
+        'services' => array(
+            'application-categories'    => 'categories',
+            'market-expire-days'        => '5',
+            'market-captcha-options'    =>  'teste3'
+            
         )
     ),
     'view_manager' => array(
