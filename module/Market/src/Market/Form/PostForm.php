@@ -8,92 +8,100 @@ namespace Market\Form;
  * @author ennio
  */
 use Zend\Form\Form;
-use Zend\Form\Element\Select;
-use Zend\Form\Element\Text;
-use Zend\Form\Element\Radio;
-use Zend\Form\Element\Email;
-use Zend\Form\Element\Textarea;
-use Zend\Form\Element\Submit;
+use Zend\Form\Element;
 use Zend\Captcha\Image as ImageCaptcha;
 
 class PostForm extends Form {
-    
+
     use CategoryTrait;
-    use ExpireDaysTrait;
-    use CaptchaTrait;      
-/*
-    private $categories;
 
-    public function setCategories($categories) {
-        $this->categories = $categories;
-    }
-*/
+use ExpireDaysTrait;
+
+use CaptchaTrait;
+    /*
+      private $categories;
+
+      public function setCategories($categories) {
+      $this->categories = $categories;
+      }
+     */
+
     public function buildForm() {
-        $this->setAttribute("method", "POST");
+        /*         * ****************************************************************
+         * Isto é um exemplo de como realizar a configurações do formulario,
+         * O importante é registrar o campos do formulário pedidos no exercícios
+         * ******************************************************************** */
 
-        $category = new Select('category');
+        // form tag attributes
+        $this->setAttribute('method', 'POST');
+
+        // define elements
+        $category = new Element\Select('category');
         $category->setLabel('Category')
-                 ->setValueOptions(array_combine($this->getCategories(),$this->getCategories()));
+                ->setValueOptions(array_combine($this->getCategories(), $this->getCategories()));
 
-        $title = new Text('title');
+        $title = new Element\Text('title');
         $title->setLabel('Title')
-                ->setAttributes(array('size' => 25, 'maxLength' => 128, 'required' => 'required', 'placeholder' => 'Listing header'));
+                ->setAttributes(array('size' => 60,
+                    'maxLength' => 128,
+                    'required' => 'required',
+                    'placeholder' => 'Listing header'));
 
-        $photo = new Text('photo_filename');
+        $photo = new Element\Text('photo_filename');
         $photo->setLabel('Photo')
                 ->setAttribute('maxlength', 1024)
                 ->setAttribute('placeholder', 'Enter URL of a JPG');
 
-        $price = new Text('price');
+        $price = new Element\Text('price');
         $price->setLabel('Price')
                 ->setAttribute('title', 'Enter price as nnn.nn')
                 ->setAttribute('size', 16)
                 ->setAttribute('maxlength', 16)
                 ->setAttribute('placeholder', 'Enter some value');
 
-        $expires = new Radio('expires');
+        $expires = new Element\Radio('expires');
         $expires->setLabel('Expires')
                 ->setAttribute('title', 'The expiration date will be calculated from today')
                 ->setAttribute('class', 'expiresButton')
                 ->setValueOptions($this->getExpireDays());
 
-        $city = new Text('cityCode');
+        $city = new Element\Text('cityCode');
         $city->setLabel('Nearest City')
                 ->setAttribute('title', 'Select the city of the item')
                 ->setAttribute('id', 'cityCode')
                 ->setAttribute('placeholder', 'Start typing and choose the city');
 
-        $name = new Text('contact_name');
+        $name = new Element\Text('contact_name');
         $name->setLabel('Contact Name')
                 ->setAttribute('title', 'Enter the name of the person to contact for this item')
                 ->setAttribute('size', 40)
                 ->setAttribute('maxlength', 255);
 
-        $phone = new Text('contact_phone');
+        $phone = new Element\Text('contact_phone');
         $phone->setLabel('Contact Phone Number')
                 ->setAttribute('title', 'Enter the phone number of the person to contact for this item')
                 ->setAttribute('size', 20)
                 ->setAttribute('maxlength', 32);
 
-        $email = new Email('contact_email');
+        $email = new Element\Email('contact_email');
         $email->setLabel('Contact Email')
                 ->setAttribute('title', 'Enter the email address of the person to contact for this item')
                 ->setAttribute('size', 40)
                 ->setAttribute('maxlength', 255);
 
-        $description = new Textarea('description');
+        $description = new Element\Textarea('description');
         $description->setLabel('Description')
                 ->setAttribute('title', 'Enter a suitable description for this posting')
                 ->setAttribute('rows', 4)
                 ->setAttribute('cols', 80);
 
-        $delCode = new Text('delete_code');
+        $delCode = new Element\Text('delete_code');
         $delCode->setLabel('Delete Code')
                 ->setAttribute('title', 'Enter the delete code for this item')
                 ->setAttribute('size', 16)
                 ->setAttribute('maxlength', 16);
 
-        $captcha = new Captcha('captcha');
+        $captcha = new Element\Captcha('captcha');
         $captchaAdapter = new ImageCaptcha();
         $captchaAdapter->setWordlen(4)
                 ->setOptions($this->captchaOptions);
@@ -102,7 +110,7 @@ class PostForm extends Form {
                 ->setAttribute('class', 'captchaStyle')
                 ->setAttribute('title', 'Help to prevent SPAM');
 
-        $submit = new Submit('submit');
+        $submit = new Element\Submit('submit');
         $submit->setAttribute('value', 'Post');
 
         $this->add($category)

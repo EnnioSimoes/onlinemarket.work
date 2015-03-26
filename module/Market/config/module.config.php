@@ -102,10 +102,22 @@ return array(
             'market-post-filter'        => 'Market\Factory\PostFilterFactory'
         ),
         'services' => array(
-            'application-categories'    => 'categories',
-            'market-expire-days'        => '5',
-            'market-captcha-options'    =>  'teste3'
-            
+            'market-expire-days' => array(
+                '1' => '1 day',
+                '5' => '5 days',
+                '10' => '10 days',
+                '20' => '20 days',
+            ),
+            'market-captcha-options' => array(
+                'imgdir' => __DIR__ . '/../../../public/captcha',
+                'imgurl' => __DIR__ . '/../../../public/images/captcha',
+                'font' =>  __DIR__ . '/../../../data/fonts/arial.ttf',
+                'fontSize' => 50,
+                'height' => 100,
+                'width' => 200,
+                'dotNoiseLevel' => 40,
+                'lineNoiseLevel' => 3
+            )
         )
     ),
     'view_manager' => array(

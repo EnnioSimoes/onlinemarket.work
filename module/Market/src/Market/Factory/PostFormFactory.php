@@ -18,7 +18,7 @@ class PostFormFactory implements FactoryInterface {
         $categories = $sm->get('categories');
 */
         $form = new PostForm();
-        $form->setCategories($sm->get('application-categories'));
+        $form->setCategories($sm->get('categories'));
         $form->setExpireDays($sm->get('market-expire-days'));
         $form->setCaptchaOptions($sm->get('market-captcha-options'));
         $form->setInputFilter($sm->get('market-post-filter'));

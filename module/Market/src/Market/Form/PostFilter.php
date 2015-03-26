@@ -30,7 +30,7 @@ class PostFilter extends InputFilter {
                 ->attachByName('StripTags')
                 ->attachByName('StringToLower');
         $category->getValidatorChain()
-                ->attachByName('InArray', array('haystack' => $this->getCategories()));
+                         ->attachByName('InArray', array('haystack' => $this->getCategories()));
 
         $title = new Input('title');
         $title->getFilterChain()
@@ -110,7 +110,7 @@ class PostFilter extends InputFilter {
         $delCode->getValidatorChain()
                 ->addByName('Digits');
 
-        $this->add($categary)
+        $this->add($category)
                 ->add($title)
                 ->add($photo)
                 ->add($price)
