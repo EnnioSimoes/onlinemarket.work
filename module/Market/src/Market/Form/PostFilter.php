@@ -48,6 +48,7 @@ class PostFilter extends InputFilter {
                 ->attachByName('StringTrim');
         $photo->getValidatorChain()
                 ->attachByName('Regex', array('pattern' => '!^(http://)?[a-z0-9./_-]+(jp(e)?g|png)$!i'));
+              //->attachByName('Regex', array('pattern' => '!^(http://)?[a-z0-9./_-]+(jp(e?g|2)?|png)$!i' ) );
         $photo->setErrorMessage('Photo must be a URL or a valid filename ending with jpg or png');
 
         $price = new Input('price');

@@ -109,14 +109,14 @@ return array(
                 '20' => '20 days',
             ),
             'market-captcha-options' => array(
-                'imgdir' => __DIR__ . '/../../../public/captcha',
-                'imgurl' => __DIR__ . '/../../../public/images/captcha',
                 'font' =>  __DIR__ . '/../../../data/fonts/arial.ttf',
+                'imgDir'    => __DIR__ . '/../../../public/captcha',
+                'imgUrl'    => '/captcha',
                 'fontSize' => 50,
                 'height' => 100,
                 'width' => 200,
                 'dotNoiseLevel' => 40,
-                'lineNoiseLevel' => 3
+                'lineNoiseLevel' => 6
             )
         )
     ),

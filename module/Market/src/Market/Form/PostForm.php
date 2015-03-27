@@ -92,7 +92,7 @@ use CaptchaTrait;
         $description = new Element\Textarea('description');
         $description->setLabel('Description')
                 ->setAttribute('title', 'Enter a suitable description for this posting')
-                ->setAttribute('rows', 4)
+                ->setAttribute('rows', 3)
                 ->setAttribute('cols', 80);
 
         $delCode = new Element\Text('delete_code');
