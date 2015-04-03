@@ -10,6 +10,8 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class PostController extends AbstractActionController{
+    
+    use \Market\Controller\ListingsTableTrait;
     public $categories;
     private $postForm;
     

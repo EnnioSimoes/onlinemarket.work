@@ -14,6 +14,8 @@ use Zend\View\Model\ViewModel;
 
 class ViewController extends AbstractActionController{
     
+    use \Market\Controller\ListingsTableTrait;
+    
     public function indexAction() {
         
         $category = $this->params()->fromRoute("category");
