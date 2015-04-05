@@ -14,18 +14,21 @@ use Zend\View\Model\ViewModel;
 
 class ViewController extends AbstractActionController{
     
-    use \Market\Controller\ListingsTableTrait;
+    use ListingsTableTrait;
     
     public function indexAction() {
         
         $category = $this->params()->fromRoute("category");
+        $listings = $this->listingsTable->getListingsByCategory($category);
         
-        return new ViewModel(array('category' => $category));
+        return new ViewModel(array('category' => $category, 'list' => $listings));
     }
     
     public function itemAction() 
     {
         $itemId = $this->params()->fromRoute("itemId");
+        
+        $item = $this->listingsTable->getListingsByID($itemId);
         
         if(!$itemId){
             
@@ -34,6 +37,6 @@ class ViewController extends AbstractActionController{
             return $this->redirect()->toRoute('market');
         }
         
-        return new ViewModel(array('itemId' => $itemId));
+        return new ViewModel(array('itemId' => $itemId, 'item' => $item));
     }
 }
