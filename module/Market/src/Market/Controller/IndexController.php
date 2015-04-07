@@ -27,8 +27,9 @@ class IndexController extends AbstractActionController {
             $messages = $this->flashMessenger()->getMessages();
         }
         
-        //return new ViewModel(array('messages' => $messages));
-        return array('messages' => $messages);
+        $itemRecent = $this->listingsTable->getLatestListing();
+        
+        return new ViewModel(array('messages' => $messages, 'item' => $itemRecent));
     }
     
     public function fooAction() 

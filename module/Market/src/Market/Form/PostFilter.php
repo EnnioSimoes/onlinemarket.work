@@ -107,7 +107,7 @@ class PostFilter extends InputFilter {
                 ->attachByName('StringTrim');
 
         $delCode = new Input('delete_code');
-        $delCode->setRequired(TRUE);
+        //$delCode->setRequired(TRUE);
         $delCode->getValidatorChain()
                 ->addByName('Digits');
 
