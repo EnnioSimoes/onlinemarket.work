@@ -34,8 +34,8 @@ class PostController extends AbstractActionController{
         if($this->getRequest()->isPost()){
             $this->postForm->setData($data);
             if($this->postForm->isValid()){
-                //$this->listingsTable->addPosting($this->postForm->getValue());
-                $this->listingsTable->addPosting($data);
+                $this->listingsTable->addPosting($this->postForm->getData());
+                //$this->listingsTable->addPosting($data);
                 
                 $this->flashMessenger()->addMessage("Obrigado por Postar!");
                 $this->redirect()->toRoute('home');
